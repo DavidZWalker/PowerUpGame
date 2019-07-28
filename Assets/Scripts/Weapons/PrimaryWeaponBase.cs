@@ -50,7 +50,7 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
                     bullet.Launch(direction, force);
                     _audioSource.PlayOneShot(gunshotAudio);
                     _currentMag--;
-                    //UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
+                    UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
                     if (_currentMag == 0)
                         Reload();
                 }
@@ -72,8 +72,8 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
         _currentMag = magSize;
         _isReady = true;
         _audioSource = GetComponent<AudioSource>();
-        //UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
-        //UIReloadBar.Instance.SetValue(0);
+        UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
+        UIReloadBar.Instance.SetValue(0);
     }
 
     // Update is called once per frame
@@ -89,14 +89,14 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
         if (IsReloading)
         {
             _timerHelper_reload += Time.deltaTime;
-            //UIReloadBar.Instance.SetValue(_timerHelper_reload / reloadTime);
+            UIReloadBar.Instance.SetValue(_timerHelper_reload / reloadTime);
             if (_timerHelper_reload >= reloadTime)
             {
                 _timerHelper_reload = 0;
                 IsReloading = false;
                 _currentMag = magSize;
-                //UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
-                //UIReloadBar.Instance.SetValue(0);
+                UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
+                UIReloadBar.Instance.SetValue(0);
             }
         }
 

@@ -208,7 +208,7 @@ MonoBehaviour:
   cooldownTime: 0.1
   magSize: 10
   reserveRounds: -1
-  reloadTime: 2
+  reloadTime: 1.5
   bulletPrefab: {fileID: 2719286501219634667, guid: de10faa330fb63345818b5e34a202b5b,
     type: 3}
   gunshotAudio: {fileID: 8300000, guid: cf08df1d064944849b0e5db75343c596, type: 3}
