@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7613814891253106167}
   - component: {fileID: 6309318819182246547}
   - component: {fileID: 4209785411178298437}
-  - component: {fileID: 8598213658600081665}
   - component: {fileID: 3982684331290057028}
   m_Layer: 9
   m_Name: Player
@@ -142,25 +141,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3108894088415273613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a81177a1de1a24e4eb1b85860df4a1d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 86e77dc7f4616074fb7a5b8bc0b31ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 25
+  movementSpeed: 20
   maxHealth: 10
   regenSpeed: 1
   regenCooldown: 3
---- !u!114 &8598213658600081665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3108894088415273613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234824f6a7e3de54e980889a322e8625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3982684331290057028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ed9e1940599144f9079227d9fc70c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 600
+  force: 1500
   cooldownTime: 0.1
   magSize: 10
   reserveRounds: -1

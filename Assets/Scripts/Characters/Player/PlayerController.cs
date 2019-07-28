@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
     //private IWeapon _selectedPrimaryWeapon;
     //private IWeapon _selectedSecondaryWeapon;
     private float _currentHealth;
     private float _timerHelper_regenCooldown;
+    private Vector2 _lookDirection;
 
     public float movementSpeed = 5f;
     public float maxHealth = 10;
@@ -33,6 +34,7 @@ public class PlayerMovementController : MonoBehaviour
     void Update()
     {
         UpdatePosition();
+        FaceMouse();
 
         //// health regeneration
         //if (_currentHealth < maxHealth)
@@ -78,5 +80,18 @@ public class PlayerMovementController : MonoBehaviour
         pos.x += horizontalMovement * movementSpeed * Time.deltaTime;
         pos.y += verticalMovement * movementSpeed * Time.deltaTime;
         _rigidbody2D.MovePosition(pos);
+    }
+
+    private void FaceMouse()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        _lookDirection = (Vector2)mousePosition - _rigidbody2D.position;
+        _lookDirection.Normalize();
+        transform.up = _lookDirection;
+    }
+
+    public Vector2 GetLookDirection()
+    {
+        return _lookDirection;
     }
 }

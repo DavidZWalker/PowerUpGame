@@ -19,7 +19,7 @@ public class PrimaryWeaponController : MonoBehaviour
         if (_selectedWeapon != null && Input.GetMouseButtonDown(MOUSEBUTTON_LEFT))
             _selectedWeapon.Fire(
                 transform.position, 
-                GetComponentInChildren<PlayerLookDirectionController>().GetLookDirection());
+                GetComponentInChildren<PlayerController>().GetLookDirection());
     }
 
     public void SetWeapon(IPrimaryWeapon weapon)
