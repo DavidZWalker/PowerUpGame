@@ -1,39 +1,48 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemySpawnerManager : MonoBehaviour, IActivatable
+public class EnemySpawnerManager : ActivatableBase
 {
-    private ISpawner[] _spawners;
+    private EnemySpawner[] _spawners;
     private float _spawnTimer;
-    private bool _isActivated = false;
+    private int _spawnedEntities;
 
     public float spawnInterval = 2;
-    public int maxEntities = 20;
+    public int maxSimultaneousEntities = 20; // how many can be alive at any given time
+    public int maxSpawnedEntities = -1; // how many should spawn; negative value => infinite
 
     // Start is called before the first frame update
     void Start()
     {
-        _spawners = GetComponentsInChildren<ISpawner>().ToArray();
+        _spawners = GetComponentsInChildren<EnemySpawner>().ToArray();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (maxSpawnedEntities >= 0 && _spawnedEntities >= maxSpawnedEntities)
+            Deactivate();
+
         if (_isActivated)
-            foreach (var spawner in _spawners.Where(x => x.IsActivated()))
+        {
+            var activeSpawners = _spawners.Where(x => x.IsActivated()).ToArray();
+            foreach (var spawner in activeSpawners)
             {
-                if (_spawnTimer >= spawnInterval && GetEnemyCount() < maxEntities)
+                if (_spawnTimer >= spawnInterval && GetEnemyCount() < maxSimultaneousEntities)
                 {
-                    var spawnNumber = GetRandomNumber(0, _spawners.Length - 1);
-                    var spawnpoint = _spawners[spawnNumber];
+                    var spawnNumber = GetRandomNumber(0, activeSpawners.Length - 1);
+                    var spawnpoint = activeSpawners[spawnNumber];
                     spawner.Spawn();
+                    _spawnedEntities++;
                     _spawnTimer = 0;
                 }
                 else
                     _spawnTimer += Time.deltaTime;
             }
+        }
     }
 
     private int GetEnemyCount()
@@ -45,21 +54,6 @@ public class EnemySpawnerManager : MonoBehaviour, IActivatable
     {
         var random = new System.Random();
         return random.Next(min, max + 1);
-    }
-    
-    public void Activate()
-    {
-        _isActivated = true;
-    }
-
-    public void Deactivate()
-    {
-        _isActivated = false;
-    }
-
-    public bool IsActivated()
-    {
-        return _isActivated;
     }
 
     public void DeactivateSingleSpawner(int spawnerNumber)

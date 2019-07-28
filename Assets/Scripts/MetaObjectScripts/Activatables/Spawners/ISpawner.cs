@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISpawner : IActivatable
+public interface ISpawner
 {
     void Spawn();
 }

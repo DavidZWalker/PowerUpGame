@@ -3,22 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour, ISpawner
+public class EnemySpawner : ActivatableBase, ISpawner
 {
     public GameObject enemyPrefab;
-
-    private bool _isActivated = true;
-
-    public void Activate()
-    {
-        _isActivated = true;
-    }
-
-    public void Deactivate()
-    {
-        _isActivated = false;
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +22,5 @@ public class EnemySpawner : MonoBehaviour, ISpawner
     {
         if (_isActivated)
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
-    }
-
-    public bool IsActivated()
-    {
-        return _isActivated;
     }
 }
