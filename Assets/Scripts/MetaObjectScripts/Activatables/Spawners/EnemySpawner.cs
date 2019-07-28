@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour, ISpawner
 {
-    public List<GameObject> spawnPoints;
     public GameObject enemyPrefab;
 
     private bool _isActivated = true;

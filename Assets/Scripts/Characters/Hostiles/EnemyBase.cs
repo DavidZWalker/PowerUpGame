@@ -5,15 +5,15 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 {
     protected Rigidbody2D _rigidBody2D;
     protected Transform _target;
-    protected AudioSource _audioSource;
+    //protected AudioSource _audioSource;
 
     public float movementSpeed = 5f;
     public int strength = 1;
 
     public float health = 1;
 
-    public AudioClip aliveSound;
-    public AudioClip killedSound;
+    //public AudioClip aliveSound;
+    //public AudioClip killedSound;
 
     protected float Health
     {
@@ -52,7 +52,7 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     void Start()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-        _audioSource = GetComponent<AudioSource>();
+        //_audioSource = GetComponent<AudioSource>();
         InternalStart();
     }
 

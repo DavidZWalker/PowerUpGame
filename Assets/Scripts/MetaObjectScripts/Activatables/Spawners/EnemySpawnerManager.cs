@@ -15,7 +15,7 @@ public class EnemySpawnerManager : MonoBehaviour, IActivatable
     // Start is called before the first frame update
     void Start()
     {
-        _spawners = FindObjectsOfType<MonoBehaviour>().OfType<EnemySpawner>().ToArray();
+        _spawners = GetComponentsInChildren<ISpawner>().ToArray();
     }
 
     // Update is called once per frame

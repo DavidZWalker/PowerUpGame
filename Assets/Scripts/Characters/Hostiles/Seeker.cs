@@ -42,8 +42,8 @@ public class Seeker : EnemyBase
         _sprite = GetComponent<SpriteRenderer>();
         _spriteColor = _sprite.color;
         _flashHelper = _amountOfFlashes;
-        _audioSource.clip = aliveSound;
-        _audioSource.Play();
+        //_audioSource.clip = aliveSound;
+        //_audioSource.Play();
     }
 
     protected override void InternalUpdate()
