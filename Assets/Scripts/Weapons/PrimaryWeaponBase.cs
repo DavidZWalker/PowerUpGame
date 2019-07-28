@@ -45,14 +45,7 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
             {
                 if (_isReady)
                 {
-                    var spreadX = Random.Range(-bulletSpread, bulletSpread);
-                    var spreadY = Random.Range(-bulletSpread, bulletSpread);
-                    var adjustedDirection = new Vector2(direction.x + spreadX, direction.y + spreadY).normalized;
-                    _isReady = false;
-                    var projectileObj = Instantiate(bulletPrefab, position + adjustedDirection * 0.5f, gameObject.transform.rotation);
-                    var bullet = projectileObj.GetComponent<IProjectile>();
-                    bullet.Launch(adjustedDirection, force);
-                    _audioSource.PlayOneShot(gunshotAudio);
+                    DoFire(position, direction);
                     _currentMag--;
                     UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
                     if (_currentMag == 0)
@@ -62,6 +55,18 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
             else
                 Reload();
         }
+    }
+
+    private void DoFire(Vector2 position, Vector2 direction)
+    {
+        var spreadX = Random.Range(-bulletSpread, bulletSpread);
+        var spreadY = Random.Range(-bulletSpread, bulletSpread);
+        var adjustedDirection = new Vector2(direction.x + spreadX, direction.y + spreadY).normalized;
+        _isReady = false;
+        var projectileObj = Instantiate(bulletPrefab, position + adjustedDirection * 0.5f, gameObject.transform.rotation);
+        var bullet = projectileObj.GetComponent<IProjectile>();
+        bullet.Launch(adjustedDirection, force);
+        _audioSource.PlayOneShot(gunshotAudio);
     }
 
     public void Reload()
