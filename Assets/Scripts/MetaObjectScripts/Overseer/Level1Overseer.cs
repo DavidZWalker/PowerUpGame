@@ -26,7 +26,7 @@ public class Level1Overseer : MonoBehaviour
     private void DoStart()
     {
         _levelStartTimer += Time.deltaTime;
-        if (_levelStartTimer > levelStartDelay)
+        if (_levelStartTimer >= levelStartDelay)
         {
             StartLevel();
             _levelStartTimer = 0;

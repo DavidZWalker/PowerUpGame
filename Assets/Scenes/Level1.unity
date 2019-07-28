@@ -16319,7 +16319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 1
-  maxEntities: 20
+  maxSimultaneousEntities: 20
+  maxSpawnedEntities: 20
 --- !u!4 &756431052
 Transform:
   m_ObjectHideFlags: 0

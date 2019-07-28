@@ -26,7 +26,7 @@ public class EnemySpawnerManager : ActivatableBase
         if (maxSpawnedEntities >= 0 && _spawnedEntities >= maxSpawnedEntities)
             Deactivate();
 
-        if (_isActivated)
+        if (IsActivated())
         {
             var activeSpawners = _spawners.Where(x => x.IsActivated()).ToArray();
             foreach (var spawner in activeSpawners)
@@ -66,6 +66,27 @@ public class EnemySpawnerManager : ActivatableBase
     {
         if (spawnerNumber >= 0 && spawnerNumber < GetSpawnerCount())
             _spawners[spawnerNumber].Activate();
+    }
+
+    public override void Activate()
+    {
+        foreach (var spawner in _spawners)
+        {
+            spawner.Activate();
+        }
+    }
+
+    public override void Deactivate()
+    {
+        foreach (var spawner in _spawners)
+        {
+            spawner.Deactivate();
+        }
+    }
+
+    public override bool IsActivated()
+    {
+        return _spawners.Any(x => x.IsActivated());
     }
 
     public int GetSpawnerCount()

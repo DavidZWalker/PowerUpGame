@@ -10,19 +10,19 @@ public class ActivatableBase : MonoBehaviour, IActivatable
     public event EventHandler Activated;
     public event EventHandler Deactivated;
 
-    public void Activate()
+    public virtual void Activate()
     {
         _isActivated = true;
         TriggerActivatedEvent();
     }
 
-    public void Deactivate()
+    public virtual void Deactivate()
     {
         _isActivated = false;
         TriggerDeactivatedEvent();
     }
 
-    public bool IsActivated()
+    public virtual bool IsActivated()
     {
         return _isActivated;
     }
