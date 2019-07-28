@@ -7,7 +7,7 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
     private bool _isReady;
     private float _timerHelper_reload;
     private float _timerHelper_cooldown;
-    //private AudioSource _audioSource;
+    private AudioSource _audioSource;
     private bool _isReloading;
 
     public float force = 200f;
@@ -16,8 +16,8 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
     public int reserveRounds = -1; // negative value = infinite
     public float reloadTime = 2f;
     public GameObject bulletPrefab;
-    //public AudioClip gunshotAudio;
-    //public AudioClip reloadAudio;
+    public AudioClip gunshotAudio;
+    public AudioClip reloadAudio;
 
     public bool IsReloading
     {
@@ -27,10 +27,10 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
             if (_isReloading != value)
             {
                 _isReloading = value;
-                //if (value)
-                //    _audioSource.PlayOneShot(reloadAudio);
-                //else if (_audioSource.isPlaying)
-                //    _audioSource.Stop();
+                if (value)
+                    _audioSource.PlayOneShot(reloadAudio);
+                else if (_audioSource.isPlaying)
+                    _audioSource.Stop();
             }
                 
         }
@@ -48,8 +48,8 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
                     var projectileObj = Instantiate(bulletPrefab, position + direction * 0.5f, gameObject.transform.rotation);
                     var bullet = projectileObj.GetComponent<IProjectile>();
                     bullet.Launch(direction, force);
-                    //_audioSource.PlayOneShot(gunshotAudio);
-                    //_currentMag--;
+                    _audioSource.PlayOneShot(gunshotAudio);
+                    _currentMag--;
                     //UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
                     if (_currentMag == 0)
                         Reload();
@@ -71,7 +71,7 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
     {
         _currentMag = magSize;
         _isReady = true;
-        //_audioSource = GetComponent<AudioSource>();
+        _audioSource = GetComponent<AudioSource>();
         //UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);
         //UIReloadBar.Instance.SetValue(0);
     }
