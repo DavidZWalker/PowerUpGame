@@ -26,4 +26,9 @@ public class PlayerLookDirectionController : MonoBehaviour
         _lookDirection.Normalize();
         transform.up = _lookDirection;
     }
+
+    public Vector2 GetLookDirection()
+    {
+        return _lookDirection;
+    }
 }
