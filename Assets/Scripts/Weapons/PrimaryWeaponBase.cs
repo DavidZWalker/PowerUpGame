@@ -13,6 +13,7 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
     public float force = 200f;
     public float cooldownTime = 0.2f;
     public int magSize = 10;
+    public float bulletSpread = 0.2f;
     public int reserveRounds = -1; // negative value = infinite
     public float reloadTime = 2f;
     public GameObject bulletPrefab;
@@ -44,10 +45,13 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
             {
                 if (_isReady)
                 {
+                    var spreadX = Random.Range(-bulletSpread, bulletSpread);
+                    var spreadY = Random.Range(-bulletSpread, bulletSpread);
+                    var adjustedDirection = new Vector2(direction.x + spreadX, direction.y + spreadY).normalized;
                     _isReady = false;
-                    var projectileObj = Instantiate(bulletPrefab, position + direction * 0.5f, gameObject.transform.rotation);
+                    var projectileObj = Instantiate(bulletPrefab, position + adjustedDirection * 0.5f, gameObject.transform.rotation);
                     var bullet = projectileObj.GetComponent<IProjectile>();
-                    bullet.Launch(direction, force);
+                    bullet.Launch(adjustedDirection, force);
                     _audioSource.PlayOneShot(gunshotAudio);
                     _currentMag--;
                     UIMagInfo.Instance.SetPrimaryWeaponMagInfo(_currentMag, reserveRounds);

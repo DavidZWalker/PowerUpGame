@@ -16320,7 +16320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 1
   maxSimultaneousEntities: 20
-  maxSpawnedEntities: 20
+  maxSpawnedEntities: 50
 --- !u!4 &756431052
 Transform:
   m_ObjectHideFlags: 0
@@ -17408,6 +17408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989294497342340205, guid: ea05baf055051b8449134afd53ee26a4,
+        type: 3}
+      propertyPath: bulletSpread
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea05baf055051b8449134afd53ee26a4, type: 3}
