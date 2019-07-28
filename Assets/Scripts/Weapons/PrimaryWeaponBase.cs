@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
+public abstract class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
 {
     private int _currentMag;
     private bool _isReady;
@@ -120,4 +120,6 @@ public class PrimaryWeaponBase : MonoBehaviour, IPrimaryWeapon
             }
         }
     }
+
+    public abstract void acceptUpgrade(IWeaponUpgrade upgrade);
 }

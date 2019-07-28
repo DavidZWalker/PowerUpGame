@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public abstract class EnemyBase : MonoBehaviour, IEnemy
 {
@@ -9,8 +10,16 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
 
     public float movementSpeed = 5f;
     public int strength = 1;
-
     public float health = 1;
+
+    public List<DropMap> dropTable;
+
+    [System.Serializable]
+    public struct DropMap
+    {
+        public GameObject prefab;
+        public float probability;
+    }
 
     //public AudioClip aliveSound;
     //public AudioClip killedSound;
@@ -47,6 +56,22 @@ public abstract class EnemyBase : MonoBehaviour, IEnemy
     protected abstract void InternalStart();
 
     protected abstract void InternalUpdate();
+
+    protected void DropItem()
+    {
+        float dropNumber = Random.Range(0, 100);
+
+        float dropCounter = 0;
+        foreach (var drop in dropTable)
+        {
+            dropCounter += drop.probability;
+            if (dropCounter > dropNumber)
+            {
+                Instantiate(drop.prefab, gameObject.transform.position, Quaternion.identity);
+                return;
+            }
+        }
+    }
 
     // Use this for initialization
     void Start()

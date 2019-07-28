@@ -204,10 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ed9e1940599144f9079227d9fc70c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1500
-  cooldownTime: 0.2
-  magSize: 10
-  bulletSpread: 0.1
+  force: 2000
+  cooldownTime: 0.1
+  magSize: 13
+  bulletSpread: 0.2
   reserveRounds: -1
   reloadTime: 1.5
   bulletPrefab: {fileID: 2719286501219634667, guid: de10faa330fb63345818b5e34a202b5b,

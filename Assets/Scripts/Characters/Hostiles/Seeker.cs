@@ -107,6 +107,7 @@ public class Seeker : EnemyBase
     public override void Kill()
     {
         var blood = Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        DropItem();
         blood.Play();
         Destroy(gameObject);
     }
@@ -121,4 +122,5 @@ public class Seeker : EnemyBase
         var player = FindObjectOfType<PlayerController>();
         _target = player.transform;
     }
+
 }
