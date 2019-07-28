@@ -7,7 +7,7 @@ public class EnemySpawnerManager : MonoBehaviour, IActivatable
 {
     private ISpawner[] _spawners;
     private float _spawnTimer;
-    private bool _isActivated = true;
+    private bool _isActivated = false;
 
     public float spawnInterval = 2;
     public int maxEntities = 20;
