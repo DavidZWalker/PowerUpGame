@@ -101,7 +101,13 @@ MonoBehaviour:
   dropTable:
   - prefab: {fileID: 3724061386592003765, guid: 98f3aecf5eaf4c8498d16d0353cb9f16,
       type: 3}
-    probability: 10
+    probability: 2
+  - prefab: {fileID: 7936171387137800410, guid: 8bbc0f26aeda16849a62491fcf7d7a03,
+      type: 3}
+    probability: 5
+  - prefab: {fileID: 6407167145059835225, guid: acd6caaf26ea336448182df7604f079b,
+      type: 3}
+    probability: 5
   flashColor: {r: 0.9966824, g: 1, b: 0, a: 0}
   bloodEffect: {fileID: 6372763768821040114, guid: db0e9c5d066d33c429bc5c4d6ed8ab08,
     type: 3}

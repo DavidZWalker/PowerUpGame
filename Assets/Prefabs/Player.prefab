@@ -205,9 +205,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2000
-  cooldownTime: 0.1
-  magSize: 13
-  bulletSpread: 0.2
+  cooldownTime: 0.3
+  magSize: 9
+  bulletSpread: 0.3
   reserveRounds: -1
   reloadTime: 1.5
   bulletPrefab: {fileID: 2719286501219634667, guid: de10faa330fb63345818b5e34a202b5b,
