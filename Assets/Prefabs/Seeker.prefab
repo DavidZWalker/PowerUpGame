@@ -107,7 +107,7 @@ MonoBehaviour:
     probability: 2
   - prefab: {fileID: 6407167145059835225, guid: acd6caaf26ea336448182df7604f079b,
       type: 3}
-    probability: 5
+    probability: 2
   flashColor: {r: 0.9966824, g: 1, b: 0, a: 0}
   bloodEffect: {fileID: 6372763768821040114, guid: db0e9c5d066d33c429bc5c4d6ed8ab08,
     type: 3}

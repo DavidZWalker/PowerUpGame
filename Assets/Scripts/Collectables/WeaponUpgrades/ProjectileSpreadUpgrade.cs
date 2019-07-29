@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileSpreadUpgrade : WeaponUpgradeBase
+public class ProjectileSpreadUpgrade : PrimaryWeaponUpgradeBase
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public class ProjectileSpreadUpgrade : WeaponUpgradeBase
 
     public override void Upgrade(StandardGun weapon)
     {
-        weapon.bulletSpread = 0;
+        weapon.bulletSpread /= 1.1f;
     }
 }

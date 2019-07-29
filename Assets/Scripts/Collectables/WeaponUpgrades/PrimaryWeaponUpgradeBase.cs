@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeaponUpgradeBase : MonoBehaviour, IWeaponUpgrade
+public abstract class PrimaryWeaponUpgradeBase : MonoBehaviour, IWeaponUpgrade
 {
+    public ParticleSystem particles;
+
     public abstract void Upgrade(StandardGun weapon);
 
     private BoxCollider2D _collider;

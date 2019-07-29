@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagSizeUpgrade : WeaponUpgradeBase
+public class MagSizeUpgrade : PrimaryWeaponUpgradeBase
 {
     public override void Upgrade(StandardGun weapon)
     {
